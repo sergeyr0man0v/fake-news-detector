@@ -1,0 +1,2 @@
+experiment_name: "fake_news_distilbert"
+tracking_uri: "file:./mlruns"

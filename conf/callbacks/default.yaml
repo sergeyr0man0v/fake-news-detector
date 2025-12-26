@@ -1,0 +1,18 @@
+model_checkpoint:
+  dirpath: "models"
+  filename: "best_model-{epoch:02d}-{val_f1:.2f}"
+  monitor: "val_f1"
+  mode: "max"
+  save_top_k: 1
+  verbose: true
+
+early_stopping:
+  monitor: "val_f1"
+  patience: 3
+  mode: "max"
+
+rich_model_summary:
+  max_depth: 2
+
+learning_rate_monitor:
+  logging_interval: "step"

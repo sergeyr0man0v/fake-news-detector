@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detector</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        textarea { width: 100%; height: 100px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #result { margin-top: 20px; font-weight: bold; }
+        .FAKE { color: red; }
+        .REAL { color: green; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fake News Detector</h1>
+        <p>Enter news text below to check its authenticity:</p>
+        <form id="predictForm">
+            <textarea name="text" id="newsText" placeholder="Paste news article text here..."></textarea>
+            <br>
+            <button type="submit">Check</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('predictForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const text = document.getElementById('newsText').value;
+            const resultDiv = document.getElementById('result');
+
+            resultDiv.innerHTML = "Checking...";
+
+            const formData = new FormData();
+            formData.append('text', text);
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    const probPercent = (data.confidence * 100).toFixed(2);
+                    resultDiv.innerHTML = `Prediction: <span class="${data.class}">${data.class}</span> <br> Confidence: ${probPercent}%`;
+                } else {
+                    resultDiv.innerHTML = `Error: ${data.detail}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `Error: ${error.message}`;
+            }
+        };
+    </script>
+</body>
+</html>

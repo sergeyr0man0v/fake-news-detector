@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+onnxruntime
+transformers
+python-multipart
+jinja2
+numpy

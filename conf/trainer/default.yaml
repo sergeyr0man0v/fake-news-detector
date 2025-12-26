@@ -1,0 +1,10 @@
+seed: 42
+max_epochs: 5
+accelerator: "auto"
+devices: "auto"
+gradient_clip_val: 1.0
+accumulate_grad_batches: 1
+precision: "16-mixed"
+scheduler:
+  patience: 2
+  factor: 0.1

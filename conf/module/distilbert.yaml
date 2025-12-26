@@ -1,0 +1,6 @@
+name: "distilbert-base-uncased"
+num_classes: 1
+dropout: 0.2
+lr: 2e-5
+weight_decay: 0.01
+freeze_backbone: true

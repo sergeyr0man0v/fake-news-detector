@@ -1,0 +1,10 @@
+data_dir: "data/raw"
+fake_news_filename: "Fake.csv"
+true_news_filename: "True.csv"
+max_length: 128
+batch_size: 8
+num_workers: 7
+train_val_test_split: [0.7, 0.15, 0.15]
+pin_memory: false
+subset_fraction: 0.3
+seed: 42

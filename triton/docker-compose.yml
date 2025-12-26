@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./sources:/app
+      # Mount the model from the project root models directory to the container
+      - ../models/model.onnx:/app/model.onnx
+      - ../models/model.onnx.data:/app/model.onnx.data

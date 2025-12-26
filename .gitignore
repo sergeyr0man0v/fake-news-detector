@@ -182,9 +182,9 @@ cython_debug/
 .abstra/
 
 # Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore
 #  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#  and can be added to the global gitignore or merged into this file. However, if you prefer,
 #  you could uncomment the following to ignore the entire vscode folder
 # .vscode/
 
@@ -205,3 +205,41 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# --- Project specific ---
+
+# Data files (managed by DVC)
+*.csv
+*.json
+*.h5
+*.parquet
+*.pkl
+*.pickle
+
+# Model files (managed by DVC)
+*.pth
+*.ckpt
+*.cbm
+*.onnx
+*.onnx.data
+*.trt
+*.pb
+
+# DVC - Ignore data but keep dvc files
+data/raw/*
+!data/raw/*.dvc
+data/processed/*
+!data/processed/*.dvc
+models/*
+!models/*.dvc
+
+# Hydra outputs
+outputs/
+multirun/
+
+# MLflow / WandB
+mlruns/
+wandb/
+
+# Local configs
+configs/local.yaml
