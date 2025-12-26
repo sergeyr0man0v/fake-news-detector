@@ -26,14 +26,6 @@ dependencies = [
     "onnxscript>=0.5.7",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.0.0",
-    "pre-commit>=3.0.0",
-    "black>=23.0.0",
-    "isort>=5.0.0",
-    "flake8>=6.0.0",
-]
 
 [build-system]
 requires = ["hatchling"]
@@ -53,3 +45,17 @@ line_length = 88
 [tool.flake8]
 max-line-length = 120
 ignore = ['E203', 'W503']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-ra -q"
+
+[dependency-groups]
+dev = [
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "isort>=5.0.0",
+    "pre-commit>=3.0.0",
+    "pytest>=7.0.0",
+]
